@@ -1,0 +1,54 @@
+@import 'normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+:root {
+    --std-width: 960px;
+    --white: #fff;
+    --black: #000;
+    --cyan: cyan;
+    --gray: rgb(130, 130, 130);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    text-rendering: optimizeSpeed;
+}
+
+a {
+    color: var(--white);
+    text-decoration: none;
+}
+
+button,
+input {
+    border: none;
+    outline: none;
+}
+
+body {
+    .tippy-box {
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1.6rem;
+        line-height: 2.2rem;
+        background-color: rgba(84, 84, 84, 1);
+        padding: 3px 9px;
+
+        .tippy-arrow {
+            top: -8px;
+            background-color: rgba(84, 84, 84, 1);
+        }
+    }
+}
