@@ -1,11 +1,11 @@
-import Header from "../DefaultLayout/Header";
-import Scrollbar from "./Scrollbar";
-function DetailLayout({children}) {
-    return(
+import { Header, Scrollbar } from '../layoutComponents';
+
+function DetailLayout({ children }) {
+    return (
         <div className="wrapper">
-            <Header/>
+            <Header />
             <div className="content">
-                <Scrollbar/>
+                <Scrollbar />
                 {children}
             </div>
         </div>
