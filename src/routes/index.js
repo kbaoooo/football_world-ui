@@ -4,7 +4,7 @@ import PLayers from '~/pages/Players';
 import Clubs from '~/pages/Clubs';
 import Kits from '~/pages/Kits';
 import DetailPlayers from '~/pages/DetailPlayers';
-import { DetailLayout } from '~/components/layouts';
+import { DetailLayout } from '~/layouts';
 
 // nhung routes khong can dang nhap van vao duoc
 const publicRoutes = [
@@ -25,7 +25,7 @@ const publicRoutes = [
         component: Kits,
     },
     {
-        path: '/detail-players',
+        path: '/:playername',
         component: DetailPlayers,
         layout: DetailLayout
     },

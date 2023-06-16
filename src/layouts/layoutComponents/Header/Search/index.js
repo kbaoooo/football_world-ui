@@ -2,6 +2,7 @@
 import styles from './Seach.module.scss';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import SearchResults from '~/components/SearchResults';
+import { useDebounce } from '~/hooks';
 
 //lib
 import classNames from 'classnames/bind';
@@ -17,23 +18,42 @@ function Search() {
     const [searchResult, setSearchResult] = useState([]);
     const [searchValue, setSearchValue] = useState('');
     const [isFocus, setIsFocus] = useState(true);
+    const [loading, setLoading] = useState(false);
+
+    const lastSearchValue = useDebounce(searchValue, 650);
 
     const inputRef = useRef();
 
     useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1,1]);
-        }, 0);
-    }, []);
+        if (!lastSearchValue.trim()) {
+            setSearchResult([])
+            return;
+        }
+
+        setLoading(true);
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(lastSearchValue)}&type=less`)
+            .then((res) => {
+                return res.json();
+            })
+            .then((res) => {
+                setSearchResult(res.data);
+                setLoading(false);
+            })
+            .catch(() => {
+                setLoading(false);
+            })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [lastSearchValue]);
 
     const handleClear = () => {
         setSearchValue('');
         setSearchResult([]);
         inputRef.current.focus();
-    }
+    };
+
     const handleHideResult = () => {
         setIsFocus(false);
-    }
+    };
 
     return (
         <HeadlessTippy
@@ -44,11 +64,9 @@ function Search() {
                     <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                         <PopperWrapper>
                             <h3 className={cx('search-title')}>Results</h3>
-                            <SearchResults />
-                            <SearchResults />
-                            <SearchResults />
-                            <SearchResults />
-                            <SearchResults />
+                            {searchResult.map((acc) => {
+                                return <SearchResults key={acc.id} data={acc} />;
+                            })}
                         </PopperWrapper>
                     </div>
                 );
@@ -65,16 +83,16 @@ function Search() {
                     onChange={(e) => {
                         setSearchValue(e.target.value);
                     }}
-                    onFocus={() => {setIsFocus(true)}}
+                    onFocus={() => {
+                        setIsFocus(true);
+                    }}
                 />
-                <button
-                    type=""
-                    className={cx('clear-btn')}
-                    onClick={handleClear}
-                >
-                    <FontAwesomeIcon icon={faCircleXmark} />
-                </button>
-                <FontAwesomeIcon icon={faSpinner} className={cx('loading-icon')} />
+                {!!searchValue && !loading && (
+                    <button type="" className={cx('clear-btn')} onClick={handleClear}>
+                        <FontAwesomeIcon icon={faCircleXmark} />
+                    </button>
+                )}
+                {loading && <FontAwesomeIcon icon={faSpinner} className={cx('loading-icon')} />}
                 <button type="" className={cx('search-btn')}>
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>

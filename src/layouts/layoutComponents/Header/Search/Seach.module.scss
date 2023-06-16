@@ -19,10 +19,6 @@
         &:not(:placeholder-shown) ~ .search-btn{
             color: var(--white);
         }
-
-        &:not(:placeholder-shown) ~ .clear-btn{
-            display: block;
-        }
     }
 
     &:focus-within {
@@ -52,23 +48,33 @@
 
 }
 
-
 .clear-btn, 
 .loading-icon {
-    display: none;
     position: absolute;
     right: calc(var(--search-btn-width) + 16px);
     top: 50%;
-    transform: translateY(-50%);
     color: var(--gray);
     cursor: pointer;
 }
 
 .clear-btn {
     background-color: transparent;
-
+    transform: translateY(-50%);
     &:hover {
         color: var(--white);
+    }
+}
+
+.loading-icon {
+    animation: spinner 0.9s infinite ease-out;
+}
+
+@keyframes spinner {
+    from {
+        transform: translateY(-50%) rotate(0);
+    }
+    to {
+        transform: translateY(-50%) rotate(360deg);
     }
 }
 
