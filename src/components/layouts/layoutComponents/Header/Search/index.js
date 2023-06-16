@@ -9,24 +9,36 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import HeadlessTippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 const cx = classNames.bind(styles);
 
 function Search() {
     const [searchResult, setSearchResult] = useState([]);
     const [searchValue, setSearchValue] = useState('');
+    const [isFocus, setIsFocus] = useState(true);
+
+    const inputRef = useRef();
 
     useEffect(() => {
         setTimeout(() => {
-            setSearchResult([]);
+            setSearchResult([1,1]);
         }, 0);
     }, []);
+
+    const handleClear = () => {
+        setSearchValue('');
+        setSearchResult([]);
+        inputRef.current.focus();
+    }
+    const handleHideResult = () => {
+        setIsFocus(false);
+    }
 
     return (
         <HeadlessTippy
             interactive={true}
-            visible
+            visible={isFocus && searchResult.length > 0}
             render={(attrs) => {
                 return (
                     <div className={cx('search-result')} tabIndex="-1" {...attrs}>
@@ -41,9 +53,11 @@ function Search() {
                     </div>
                 );
             }}
+            onClickOutside={handleHideResult}
         >
             <div className={cx('search')}>
                 <input
+                    ref={inputRef}
                     type="text"
                     placeholder="Search here..."
                     spellCheck={false}
@@ -51,8 +65,13 @@ function Search() {
                     onChange={(e) => {
                         setSearchValue(e.target.value);
                     }}
+                    onFocus={() => {setIsFocus(true)}}
                 />
-                <button type="" className={cx('clear-btn')}>
+                <button
+                    type=""
+                    className={cx('clear-btn')}
+                    onClick={handleClear}
+                >
                     <FontAwesomeIcon icon={faCircleXmark} />
                 </button>
                 <FontAwesomeIcon icon={faSpinner} className={cx('loading-icon')} />
