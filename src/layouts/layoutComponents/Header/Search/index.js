@@ -3,6 +3,7 @@ import styles from './Seach.module.scss';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import SearchResults from '~/components/SearchResults';
 import { useDebounce } from '~/hooks';
+import * as searchService from '~/apiServices/searchService';
 
 //lib
 import classNames from 'classnames/bind';
@@ -26,23 +27,20 @@ function Search() {
 
     useEffect(() => {
         if (!lastSearchValue.trim()) {
-            setSearchResult([])
+            setSearchResult([]);
             return;
         }
 
-        setLoading(true);
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(lastSearchValue)}&type=less`)
-            .then((res) => {
-                return res.json();
-            })
-            .then((res) => {
-                setSearchResult(res.data);
-                setLoading(false);
-            })
-            .catch(() => {
-                setLoading(false);
-            })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        const fetchApi = async () => {
+            setLoading(true);
+            const result = await searchService.search(lastSearchValue);
+            setSearchResult(result);
+            setLoading(false);
+        };
+
+        fetchApi();
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [lastSearchValue]);
 
     const handleClear = () => {
