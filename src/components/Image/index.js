@@ -6,6 +6,7 @@ import styles from './image.module.scss';
 import { forwardRef } from 'react';
 import { useState } from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 const Image = forwardRef(({ src, className, alt, replaceImage = images.noImage, ...props }, ref) => {
     const [_replaceImage, setReplaceImage] = useState('');
@@ -25,5 +26,12 @@ const Image = forwardRef(({ src, className, alt, replaceImage = images.noImage, 
         />
     );
 });
+
+Image.propTypes = {
+    src: PropTypes.string,
+    className: PropTypes.string,
+    alt: PropTypes.string,
+    replaceImage: PropTypes.string,
+};
 
 export default Image;

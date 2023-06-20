@@ -1,6 +1,15 @@
+//src
+import PropTypes from 'prop-types';
+
+//lib
 import './GlobalStyles.scss';
-function GlobalStyles({children}) {
+
+function GlobalStyles({ children }) {
     return children;
 }
 
-export default GlobalStyles
+GlobalStyles.propTypes = {
+    children: PropTypes.node.isRequired, 
+};
+
+export default GlobalStyles;

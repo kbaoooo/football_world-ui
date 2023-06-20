@@ -22,7 +22,7 @@ function SearchResults({ data }) {
 }
 
 SearchResults.propTypes = {
-    data: PropTypes.object,
+    data: PropTypes.object.isRequired,
 };
 
 export default SearchResults;
