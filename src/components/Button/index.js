@@ -5,6 +5,7 @@ import styles from './Button.module.scss';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import { forwardRef } from 'react';
+import PropTypes from 'prop-types'
 
 const cx = classNames.bind(styles);
 
@@ -70,6 +71,10 @@ function Button({
             {rightIcon && <span className={cx('icon')}>{rightIcon}</span>}
         </Component>
     );
+}
+
+Button.propTypes = {
+    children: PropTypes.node.isRequired,
 }
 
 export default forwardRef(Button);

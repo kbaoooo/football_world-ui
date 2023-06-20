@@ -1,5 +1,4 @@
 .wrapper {
-    --header-height: 75px;
     --search-border-radius: 92px;
     --search-btn-width: 52px;
     --login-avatar-size: 37px;
@@ -9,11 +8,11 @@
     height: var(--header-height);
     background-color: var(--black);
     // transform: translateY(-75px);
-    // position: fixed;
-    // top: 0;
-    // left: 0;
-    // right: 0;
-    // z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
     // opacity: 0;
     // transition: opacity 0.25s cubic-bezier(0.075, 0.82, 0.165, 1),
     // transform 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);

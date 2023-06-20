@@ -12,7 +12,7 @@ import { useState } from 'react';
 const cx = classNames.bind(styles);
 const defaultFn = () => {};
 
-function Menu({ children, items = [], onChange = defaultFn }) {
+function Menu({ children, items = [], onChange = defaultFn, hideOnClick = true }) {
     const [listItem, setListItem] = useState([{ data: items }]);
     const current = listItem[listItem.length - 1];
 
@@ -38,6 +38,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
     };
     return (
         <HeadlessTippy
+            hideOnClick={hideOnClick}
             onHide={() => {
                 setListItem((prev) => {
                     return prev.slice(0, 1);
@@ -60,7 +61,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
                                     }}
                                 />
                             )}
-                            {renderItems()}
+                            <div className={cx('menu-body')}>{renderItems()}</div>
                         </PopperWrapper>
                     </div>
                 );

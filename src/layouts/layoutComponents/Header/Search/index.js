@@ -53,49 +53,67 @@ function Search() {
         setIsFocus(false);
     };
 
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+        if (!searchValue.startsWith(' ')) {
+            setSearchValue(searchValue);
+        } else {
+            return;
+        }
+    };
+
+    const handleSearch = (e) => {};
+
     return (
-        <HeadlessTippy
-            interactive={true}
-            visible={isFocus && searchResult.length > 0}
-            render={(attrs) => {
-                return (
-                    <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                        <PopperWrapper>
-                            <h3 className={cx('search-title')}>Results</h3>
-                            {searchResult.map((acc) => {
-                                return <SearchResults key={acc.id} data={acc} />;
-                            })}
-                        </PopperWrapper>
-                    </div>
-                );
-            }}
-            onClickOutside={handleHideResult}
-        >
-            <div className={cx('search')}>
-                <input
-                    ref={inputRef}
-                    type="text"
-                    placeholder="Search here..."
-                    spellCheck={false}
-                    value={searchValue}
-                    onChange={(e) => {
-                        setSearchValue(e.target.value);
-                    }}
-                    onFocus={() => {
-                        setIsFocus(true);
-                    }}
-                />
-                {!!searchValue && !loading && (
-                    <button type="" className={cx('clear-btn')} onClick={handleClear}>
-                        <FontAwesomeIcon icon={faCircleXmark} />
+        <span>
+            <HeadlessTippy
+                interactive={true}
+                visible={isFocus && searchResult.length > 0}
+                render={(attrs) => {
+                    return (
+                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+                            <PopperWrapper>
+                                <h3 className={cx('search-title')}>Results</h3>
+                                {searchResult.map((acc) => {
+                                    return <SearchResults key={acc.id} data={acc} />;
+                                })}
+                            </PopperWrapper>
+                        </div>
+                    );
+                }}
+                onClickOutside={handleHideResult}
+            >
+                <div className={cx('search')}>
+                    <input
+                        ref={inputRef}
+                        type="text"
+                        placeholder="Search here..."
+                        spellCheck={false}
+                        value={searchValue}
+                        onChange={handleChange}
+                        onFocus={() => {
+                            setIsFocus(true);
+                        }}
+                    />
+                    {!!searchValue && !loading && (
+                        <button type="" className={cx('clear-btn')} onClick={handleClear}>
+                            <FontAwesomeIcon icon={faCircleXmark} />
+                        </button>
+                    )}
+                    {loading && <FontAwesomeIcon icon={faSpinner} className={cx('loading-icon')} />}
+                    <button
+                        type=""
+                        className={cx('search-btn')}
+                        onClick={handleSearch}
+                        onMouseDown={(e) => {
+                            e.preventDefault();
+                        }}
+                    >
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </button>
-                )}
-                {loading && <FontAwesomeIcon icon={faSpinner} className={cx('loading-icon')} />}
-                <button type="" className={cx('search-btn')}>
-                    <FontAwesomeIcon icon={faMagnifyingGlass} />
-                </button>
-            </div>
-        </HeadlessTippy>
+                </div>
+            </HeadlessTippy>
+        </span>
     );
 }
 

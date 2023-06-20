@@ -5,27 +5,28 @@ import Clubs from '~/pages/Clubs';
 import Kits from '~/pages/Kits';
 import DetailPlayers from '~/pages/DetailPlayers';
 import { DetailLayout } from '~/layouts';
+import { routesConfig } from '~/configs';
 
 // nhung routes khong can dang nhap van vao duoc
 const publicRoutes = [
     {
-        path: '/',
+        path: routesConfig.home,
         component: Home,
     },
     {
-        path: '/players',
+        path: routesConfig.players,
         component: PLayers,
     },
     {
-        path: '/clubs',
+        path: routesConfig.clubs,
         component: Clubs,
     },
     {
-        path: '/kits',
+        path: routesConfig.kits,
         component: Kits,
     },
     {
-        path: '/:playername',
+        path: routesConfig.detailPlayers,
         component: DetailPlayers,
         layout: DetailLayout
     },

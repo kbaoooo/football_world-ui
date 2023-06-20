@@ -1,0 +1,16 @@
+.wrapper {
+    --header-height: 75px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: var(--std-width);
+    background-color: aqua;
+    margin-top: var(--header-height);
+}
+
+.content {
+    flex: 1;
+}
