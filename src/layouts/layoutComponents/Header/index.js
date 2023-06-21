@@ -1,8 +1,8 @@
 //src
 import styles from './Header.module.scss';
 import images from '~/assets/imgs';
-import Menu from '~/components/Popper/Menu';
-import Image from '~/components/Image';
+import Menu from '~/components/Popper/Menu/Menu';
+import Image from '~/components/Image/Image';
 import Search from './Search';
 import { routesConfig } from '~/configs';
 
@@ -20,7 +20,7 @@ import {
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { useState } from 'react';
-import Button from '~/components/Button';
+import Button from '~/components/Button/Button';
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -113,7 +113,11 @@ function Header() {
                             <Button text_type>Login</Button>
                         </Fragment>
                     )}
-                    <Menu hideOnClick={false} items={isLogIn ? LOGIN_MENU_ITEMS : MENU_ITEMS} onChange={handleMenuChange}>
+                    <Menu
+                        hideOnClick={false}
+                        items={isLogIn ? LOGIN_MENU_ITEMS : MENU_ITEMS}
+                        onChange={handleMenuChange}
+                    >
                         {isLogIn ? (
                             <Image className={cx('login-avatar')} src={images.loginAvatar} alt="Neymar JR" />
                         ) : (

@@ -1,7 +1,7 @@
 //src
 import styles from './Seach.module.scss';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
-import SearchResults from '~/components/SearchResults';
+import SearchResults from '~/components/SearchResults/SearchResults';
 import { useDebounce } from '~/hooks';
 import * as searchService from '~/apiServices/searchService';
 
