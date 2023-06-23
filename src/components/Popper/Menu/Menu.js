@@ -8,7 +8,7 @@ import Header from './Header';
 import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import { useState } from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 const cx = classNames.bind(styles);
 const defaultFn = () => {};
@@ -17,7 +17,20 @@ function Menu({ children, items = [], onChange = defaultFn, hideOnClick = true }
     const [listItem, setListItem] = useState([{ data: items }]);
     const current = listItem[listItem.length - 1];
 
+    const handleResetToFirstPage = () => {
+        setListItem((prev) => {
+            return prev.slice(0, 1);
+        });
+    };
+
+    const handleBack = () => {
+        setListItem((prev) => {
+            return prev.slice(0, prev.length - 1);
+        });
+    };
+
     const renderItems = () => {
+        //useMemo
         return current.data.map((item, index) => {
             const isParent = !!item.children;
             return (
@@ -40,11 +53,7 @@ function Menu({ children, items = [], onChange = defaultFn, hideOnClick = true }
     return (
         <HeadlessTippy
             hideOnClick={hideOnClick}
-            onHide={() => {
-                setListItem((prev) => {
-                    return prev.slice(0, 1);
-                });
-            }}
+            onHide={handleResetToFirstPage}
             delay={[0, 700]}
             interactive={true}
             placement="bottom-end"
@@ -52,16 +61,7 @@ function Menu({ children, items = [], onChange = defaultFn, hideOnClick = true }
                 return (
                     <div className={cx('menu')} tabIndex="-1" {...attrs}>
                         <PopperWrapper className={cx('menu-popper')}>
-                            {listItem.length > 1 && (
-                                <Header
-                                    title={current.title}
-                                    onBack={() => {
-                                        setListItem((prev) => {
-                                            return prev.slice(0, prev.length - 1);
-                                        });
-                                    }}
-                                />
-                            )}
+                            {listItem.length > 1 && <Header title={current.title} onBack={handleBack} />}
                             <div className={cx('menu-body')}>{renderItems()}</div>
                         </PopperWrapper>
                     </div>
@@ -78,6 +78,6 @@ Menu.propTypes = {
     items: PropTypes.array.isRequired,
     onChange: PropTypes.func,
     hideOnClick: PropTypes.bool,
-}
+};
 
 export default Menu;
