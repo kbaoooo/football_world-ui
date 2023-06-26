@@ -1,14 +1,14 @@
 .wrapper {
     --header-height: 75px;
-
-    display: flex;
-    justify-content: center;
 }
 
 .container {
     width: var(--std-width);
-    background-color: aqua;
-    margin-top: var(--header-height);
+    margin: 0 auto;
+    background-color: var(--black);
+    box-shadow: rgba(83, 83, 83 / 0.12) 0 2px 12px;
+    height: 2000px;
+    display: flex;
 }
 
 .content {
