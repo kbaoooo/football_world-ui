@@ -1,0 +1,51 @@
+.wrapper {
+    background-color: var(--primary-color);
+    box-shadow: var(--main-component-boxshadow);
+    padding: 15px 0;
+
+    &.borderRadiusTop {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+
+    &.borderRadiusBottom {
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+}
+
+.wrapper-item {
+    font-size: 1.8rem;
+    transition: 200ms ease-in;
+
+    &:hover {
+        background-color: var(--item-hover-color);
+    }
+}
+
+.item-link {
+    width: 100%;
+    padding: 15px 0 15px 35px;
+    display: inline-block;
+    color: var(--sidebar-item-color);
+    transition: 0.25s ease-in-out;
+
+    &:hover {
+        transform: translateX(10px);
+    }
+}
+
+.icon {
+    display: inline-block;
+    width: 18px;
+    text-align: center;
+}
+
+.title {
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.icon + .title {
+    margin-left: 20px;
+}

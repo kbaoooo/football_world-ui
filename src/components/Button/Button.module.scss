@@ -11,7 +11,7 @@
     cursor: pointer;
     user-select: none;
     background-color: transparent;
-    color: var(--white);
+    color: var(--secondary-color);
 
     + .wrapper {
         margin-left: 10px;
@@ -36,20 +36,32 @@
 
 //Button style
 .primary {
-    background-color: rgb(255, 196, 0);
-    color: var(--black);
-
-    &:hover {
-        background-color: yellow;
-    }
+    background: #5e5df0;
+    border-radius: 999px;
+    box-shadow: #5e5df0 0 10px 20px -10px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: fit-content;
+    word-break: break-word;
+    border: 0;
 }
 
 .outline {
-    border: 1px solid var(--white);
-    background-color: var(--black);
+    border: 1px solid #5e5df0;
+    background-color: var(--primary-color);
 
     &:hover {
-        background-color: rgb(58, 57, 57);
+        color: #5e5df0;
     }
 }
 

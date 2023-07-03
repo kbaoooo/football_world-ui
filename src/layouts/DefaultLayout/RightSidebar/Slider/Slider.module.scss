@@ -1,0 +1,55 @@
+.wrapper {
+    width: 268px;
+    height: 268px;
+    overflow: hidden;
+    border-radius: 30px;
+    box-shadow: var(--main-component-boxshadow);
+}
+
+.slider {
+    position: relative;
+    display: flex;
+    border-radius: 30px;
+    animation: slide 30s infinite alternate running;
+    img {
+        width: 268px;
+        height: 268px;
+        object-fit: cover;
+    }
+}
+
+@keyframes slide {
+    0% {
+        left: 0;
+    }
+    10% {
+        left: 0;
+    }
+    20% {
+        left: -268px;
+    }
+    30% {
+        left: -268px;
+    }
+    40% {
+        left: -536px;
+    }
+    50% {
+        left: -536px;
+    }
+    60% {
+        left: -268px;
+    }
+    70% {
+        left: -268px;
+    }
+    80% {
+        left: 0px;
+    }
+    90% {
+        left: 0px;
+    }
+    100% {
+        left: 0px;
+    }
+}

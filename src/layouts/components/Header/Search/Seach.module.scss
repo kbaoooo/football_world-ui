@@ -1,0 +1,99 @@
+.search {
+    position: relative;
+    display: flex;
+    height: 45px;
+    border-radius: var(--search-border-radius);
+    padding-left: 16px;
+    border: 1.5px solid hsl(0, 5%, 75%);
+    background-color: var(--primary-color);
+    box-shadow: var(--main-component-boxshadow);
+
+    input {
+        flex-grow: 1;
+        color: var(--secondary-color);
+        height: 100%;
+        font-size: 1.6rem;
+        caret-color: red;
+        background-color: transparent;
+        padding-right: 40px;
+
+        &:not(:placeholder-shown) ~ .search-btn {
+            color: var(--secondary-color);
+        }
+    }
+
+    &:focus-within {
+        border-color: cyan;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 1px;
+        height: 28px;
+        right: var(--search-btn-width);
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: var(--sub-title-color);
+    }
+}
+
+.search-result,
+.search {
+    width: 400px;
+    color: var(--secondary-color);
+}
+
+.search-title {
+    font-size: 1.4rem;
+    padding: 5px 12px;
+}
+
+.clear-btn,
+.loading-icon {
+    position: absolute;
+    right: calc(var(--search-btn-width) + 16px);
+    top: 50%;
+    color: var(--sub-title-color);
+    cursor: pointer;
+}
+
+.clear-btn {
+    background-color: transparent;
+    transform: translateY(-50%);
+    &:hover {
+        color: rgb(168, 163, 163);
+    }
+}
+
+.loading-icon {
+    animation: spinner 0.9s infinite ease-out;
+}
+
+@keyframes spinner {
+    from {
+        transform: translateY(-50%) rotate(0);
+    }
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+.search-btn {
+    width: var(--search-btn-width);
+    height: 100%;
+    border-top-right-radius: var(--search-border-radius);
+    border-bottom-right-radius: var(--search-border-radius);
+    font-size: 2rem;
+    background-color: transparent;
+    cursor: pointer;
+    color: var(--sub-title-color);
+
+    &:hover {
+        color: var(--secondary-color);
+    }
+
+    &:active {
+        background-color: var(--item-hover-color);
+    }
+}

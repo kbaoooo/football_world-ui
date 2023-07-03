@@ -1,0 +1,50 @@
+.wrapper {
+    --search-border-radius: 92px;
+    --search-btn-width: 52px;
+    --login-avatar-size: 37px;
+    --logo-header-size: 64px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--header-height);
+    background-color: transparent;
+}
+
+.inner {
+    width: var(--std-width);
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-link {
+    display: inline-block;
+    width: var(--logo-header-size);
+    height: var(--logo-header-size);
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+}
+
+.login-avatar {
+    width: var(--login-avatar-size);
+    height: var(--login-avatar-size);
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 28px;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+.more-btn {
+    cursor: pointer;
+    padding: 4px 8px;
+    font-size: 2rem;
+    margin-left: 25px;
+    background-color: transparent;
+    color: var(--secondary-color);
+}

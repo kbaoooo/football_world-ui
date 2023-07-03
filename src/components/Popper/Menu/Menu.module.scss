@@ -1,6 +1,5 @@
 // Menu
 .menu {
-    --header-color: rgb(235, 229, 229);
     width: 224px;
 
     .item {
@@ -20,9 +19,9 @@
     &.separate {
         border-top: 1px solid rgb(155, 152, 152);
     }
-        
+
     &:hover {
-        background-color: rgb(58, 57, 57);
+        background-color: var(--item-hover-color);
     }
 }
 
@@ -31,30 +30,27 @@
 }
 
 // Header
-.header{
+.header {
     position: relative;
     height: 50px;
     margin-top: -8px;
     flex-shrink: 0;
 }
 
-.back-btn{
+.back-btn {
     font-size: 1.4rem;
-    color: var(--header-color);
+    color: var(--secondary-color);
     background-color: transparent;
     cursor: pointer;
     height: 100%;
     width: 50px;
 }
 
-.header-title{
-    color: var(--header-color);
+.header-title {
+    color: var(--secondary-color);
     font-size: 1.6rem;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
-
-

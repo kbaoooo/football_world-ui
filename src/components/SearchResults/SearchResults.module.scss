@@ -1,11 +1,11 @@
 .wrapper {
     display: flex;
-    align-items: center;    
+    align-items: center;
     padding: 9px 16px;
     cursor: pointer;
 
     &:hover {
-        background-color: rgb(20, 20, 20);
+        background-color: var(--item-hover-color);
     }
 }
 
@@ -22,12 +22,12 @@
 }
 
 .name {
-    color: var(--white);
+    color: var(--secondary-color);
     font-size: 1.6rem;
     font-weight: 500;
 }
 
 .country {
-    color: rgb(192, 189, 189);
+    color: var(--sub-title-color);
     font-size: 1.4rem;
 }

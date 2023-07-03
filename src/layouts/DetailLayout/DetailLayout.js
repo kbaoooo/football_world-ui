@@ -1,5 +1,5 @@
 //src
-import { Header, Scrollbar } from '../layoutComponents';
+import { Header, Scrollbar } from '../components';
 
 //lib
 import PropTypes from 'prop-types';

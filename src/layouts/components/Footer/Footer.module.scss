@@ -1,0 +1,38 @@
+.wrapper {
+    background-color: #000;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 76px 0;
+}
+
+.section-outter {
+    padding: 0 106px;
+}
+
+.row {
+    display: flex;
+}
+
+.col {
+    padding: 0 34px;
+}
+
+.header {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    height: 60px;
+}
+
+.content {
+    font-size: 1.4rem;
+    color: rgb(161, 159, 159);
+
+    a {
+        color: rgb(161, 159, 159);
+        &:hover {
+            color: #fff;
+        }
+    }
+}
+

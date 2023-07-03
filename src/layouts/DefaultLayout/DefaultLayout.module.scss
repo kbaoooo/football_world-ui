@@ -1,16 +1,15 @@
 .wrapper {
-    --header-height: 75px;
+    --header-height: 76px;
 }
 
 .container {
     width: var(--std-width);
     margin: 0 auto;
-    background-color: var(--black);
-    box-shadow: rgba(83, 83, 83 / 0.12) 0 2px 12px;
-    height: 2000px;
     display: flex;
+    padding: 10px 0;
 }
 
 .content {
     flex: 1;
+    padding: 0 20px;
 }
