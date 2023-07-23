@@ -1,13 +1,20 @@
 import * as request from '~/utils/request';
 
-export const search = async (q, type = 'less') => {
+export const search = async (player_name, type = 'less') => {
     try {
-        const response = await request.get('users/search', {
+        const response = await request.get('', {
             params: {
-                q,
-                type
+                action: 'get_players',
+                player_name,
+                type,
             },
         });
-        return response.data;
-    } catch (err) {}
+        if (type === 'less') {
+            return Array.isArray(response.data) ? response.data.slice(0, 5) : [];
+        } else {
+            return Array.isArray(response.data) ? response.data : [];
+        }
+    } catch (err) {
+        console.log(err);
+    }
 };

@@ -5,7 +5,6 @@ import styles from './ChangeTheme.module.scss';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
-import { useEffect } from 'react';
 
 const cx = classNames.bind(styles);
 

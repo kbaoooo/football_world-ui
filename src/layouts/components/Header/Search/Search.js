@@ -33,13 +33,13 @@ function Search() {
 
         const fetchApi = async () => {
             setLoading(true);
-            const result = await searchService.search(lastSearchValue);
+            const result = await searchService.search(lastSearchValue); 
             setSearchResult(result);
             setLoading(false);
         };
 
         fetchApi();
-
+        
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [lastSearchValue]);
 
@@ -74,8 +74,8 @@ function Search() {
                         <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                             <PopperWrapper>
                                 <h3 className={cx('search-title')}>Results</h3>
-                                {searchResult.map((acc) => {
-                                    return <SearchResults key={acc.id} data={acc} />;
+                                {searchResult.map((player, index) => {
+                                    return <SearchResults key={index} data={player} />;
                                 })}
                             </PopperWrapper>
                         </div>
